@@ -1,0 +1,7 @@
+# Get the access credentials for the Kubernetes cluster.
+az aks get-credentials --resource-group rg-devops-workshop --name aks-devops-workshop-ver1
+kubectl get pods
+kubectl get service mhc-front --watch
+
+# Remove resources
+az group delete --name rg-devops-workshop
