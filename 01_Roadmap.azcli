@@ -20,8 +20,8 @@ az group create --name rg-devops-workshop --location westeurope
 az aks get-versions --location westeurope --query 'orchestrators[-1].orchestratorVersion' -o tsv
 
 # Create Azure Kubernetes Service
-az aks create --resource-group rg-devops-workshop --name aks-devops-workshop-ver1 --enable-addons monitoring `
-  --kubernetes-version 1.22.4 --generate-ssh-keys --location westeurope --node-count 2 --node-vm-size Standard_B2s
+az aks create --resource-group rg-devops-workshop --name aks-devops-workshop-ver2 --enable-addons monitoring `
+  --kubernetes-version 1.22.4 --generate-ssh-keys --location westeurope --node-count 2 --node-vm-size Standard_D2_v5
 
 # Create Azure Container Registry (ACR)
 az acr create --resource-group rg-devops-workshop --name acrdevopsworkshop1 --sku Standard --location westeurope
@@ -31,5 +31,7 @@ az sql server create --location westeurope --resource-group rg-devops-workshop `
   --name sql-devops-workshop-ver1 --admin-user sqladmin --admin-password P2ssw0rd1234
 az sql db create -g rg-devops-workshop -s sql-devops-workshop-ver1 -n mhcdb --service-objective S0
 
+# SQL Firewalls and virtual networks: Allow Azure services and resources to access this server
+
 # Azure Kubernetes Service permissions for ACR
-az aks update --name aks-devops-workshop-ver1 --resource-group rg-devops-workshop --attach-acr acrdevopsworkshop1
+az aks update --name aks-devops-workshop-ver2 --resource-group rg-devops-workshop --attach-acr acrdevopsworkshop1
